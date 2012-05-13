@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="base-layout-noaside" template="/WEB-INF/jsp/tmpls/layouts/noaside.jsp">
+		<put-attribute name="keywords" value="请修改关键字" />
+		<put-attribute name="description" value="请修改描述" />
+		<put-attribute name="header" value="/WEB-INF/jsp/tmpls/common/header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/tmpls/common/content.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/tmpls/common/footer.jsp" />
+	</definition>
+
+	<definition name="base-layout-raside" template="/WEB-INF/jsp/tmpls/layouts/raside.jsp"
+		extends="base-layout-noaside">
+		<put-attribute name="sidebar" value="/WEB-INF/jsp/tmpls/common/sidebar.jsp" />
+	</definition>
+
+	<definition name="index" extends="base-layout-noaside">
+		<put-attribute name="title" value="Lazy Network - 您强大的信息聚合助手" />
+		<put-attribute name="keywords" value="sns,social,network,weibo,sina,renren" />
+		<put-attribute name="description" value="LazyNetwork 是您强大的信息聚合助手。" />
+		<put-attribute name="content" value="/WEB-INF/jsp/tmpls/index/content.jsp" />
+	</definition>
+
+	<definition name="login-failure" extends="base-layout-noaside">
+		<put-attribute name="title" value="验证失败" />
+	</definition>
+
+	<definition name="login-error" extends="base-layout-noaside">
+		<put-attribute name="title" value="服务器内部错误" />
+	</definition>
+
+	<definition name="sina-login-failure" extends="login-failure">
+		<put-attribute name="title" value="新浪微博验证失败" />
+	</definition>
+
+	<definition name="sina-login-error" extends="login-error">
+		<put-attribute name="title" value="登陆新浪微博时服务器出现错误" />
+	</definition>
+
+	<definition name="user-home" extends="base-layout-raside">
+		<put-attribute name="title" value="用户首页" />
+		<put-attribute name="content" value="/WEB-INF/jsp/tmpls/users/home/content.jsp" />
+		<put-attribute name="sidebar" value="/WEB-INF/jsp/tmpls/users/home/sidebar.jsp" />
+	</definition>
+
+</tiles-definitions>

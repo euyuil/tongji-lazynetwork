@@ -1,0 +1,148 @@
+@charset "utf-8";
+
+* {
+	padding: 0px;
+	margin: 0px;
+	font-family: '微软雅黑', '文泉驿正黑', 'DejaVu Sans', Verdana, sans-serif;
+}
+
+body {
+	/* background-color: #6ae; */
+}
+
+header {
+	background: url('../images/header.png');
+	height: 48px;
+	color: #fff;
+	line-height: 38px;
+	padding: 0 8px;
+}
+
+header a {
+	color: #fff;
+	text-decoration: none;
+}
+
+header a:hover {
+	color: #eee;
+	text-decoration: underline;
+}
+
+footer {
+	background: url('../images/footer.png');
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	color: #fff;
+	padding-top: 10px;
+}
+
+div#outer-wrapper {
+	/* background-color: #fff; */
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+div#inner-wrapper {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+section#content {
+	width: 720px;
+}
+
+section#content.content-only {
+	width: 100%;
+}
+
+aside#sidebar {
+	width: 240px;
+}
+
+#login-choices {
+	text-align: center;
+}
+
+#login-choices ul, #login-choices li {
+	display: inline-block;
+	text-align: center;
+}
+
+#login-choices input#login-openid-url {
+	margin-top: 30px;
+	margin-left: 108px;
+	padding-left: 6px;
+	padding-right: 6px;
+	height: 41px;
+	width: 505px;
+	background: transparent;
+	border: none;
+	font-size: 18px;
+}
+
+#login-choices .login-choice, #login-choices .login-choice a {
+	width: 360px;
+	height: 100px;
+	display: inline-block;
+}
+
+#login-choices li#login-openid {
+	background: url('../images/login-openid.png');
+	width: 720px;
+	height: 100px;
+	text-align: left;
+}
+
+#login-choices #login-sina-weibo {
+	background: url('../images/login-sina-weibo.png');
+}
+
+#login-choices #login-renren {
+	background: url('../images/login-renren.png');
+}
+
+#login-choices #login-qq-weibo {
+	background: url('../images/login-qq-weibo.png');
+}
+
+#login-choices #login-netease-weibo {
+	background: url('../images/login-netease-weibo.png');
+}
+
+#content.content-left {
+	float: left;
+	clear: none;
+}
+
+#sidebar.sidebar-right {
+	float: right;
+	clear: none;
+}
+
+#new-entry-content {
+	width: 720px;
+	max-width: 720px;
+	height: 64px;
+	max-height: 64px;
+}
+
+#new-entry-submit {
+	margin: 0;
+	padding: 4px 12px;
+	float: right;
+}
+
+.clearfix {
+	clear: both;
+}
+
+#timeline .entry {
+	margin: 10px 0;
+	padding: 8px 10px;
+	border: solid 1px #aaa;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-gecko-border-radius: 4px;
+}

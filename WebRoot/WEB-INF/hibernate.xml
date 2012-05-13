@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/j2ee" />
+		<property name="username" value="root" />
+		<property name="password" value="test" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<!-- <property name="configLocation" value="classpath:hibernate.cfg.xml" /> -->
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<!-- <prop key="hibernate.current_session_context_class">thread</prop> -->
+				<!-- <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop> -->
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>sse.db.pojo.gen.TSession</value>
+				<value>sse.db.pojo.gen.TAccount</value>
+				<value>sse.db.pojo.gen.TOauthSina</value>
+				<value>sse.db.pojo.gen.TUser</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="HibSessManager" class="sse.db.HibSessManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="HibTransManager" class="sse.db.HibTransManager">
+		<property name="realManager">
+			<ref bean="transactionManager" />
+		</property>
+	</bean>
+
+	<bean id="TSessionDAO" class="sse.db.pojo.gen.TSessionDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="TAccountDAO" class="sse.db.pojo.gen.TAccountDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="TOauthSinaDAO" class="sse.db.pojo.gen.TOauthSinaDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="TUserDAO" class="sse.db.pojo.gen.TUserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="AccountUtil" class="sse.db.pojo.AccountUtil" parent="TAccountDAO"></bean>
+	<bean id="OauthSinaUtil" class="sse.db.pojo.OauthSinaUtil" parent="TOauthSinaDAO"></bean>
+	<bean id="UserUtil" class="sse.db.pojo.UserUtil" parent="TUserDAO"></bean>
+
+</beans>
