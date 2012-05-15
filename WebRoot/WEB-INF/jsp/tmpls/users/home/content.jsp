@@ -15,8 +15,7 @@
 	<section id="timeline">
 		<s:iterator value="entries">
 			<div class="entry">
-				<s:property value="authorName" />:
-				<s:property value="content" />
+				<s:property value="htmlExcerpt" escapeHtml="false" />
 			</div>
 		</s:iterator>
 	</section>

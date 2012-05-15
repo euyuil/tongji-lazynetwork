@@ -1,6 +1,8 @@
 package sse.user;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -42,8 +44,16 @@ public class HomeAction extends ActionSupport implements ServletRequestAware, Se
 			// 说明当前登陆的用户是这个首页的主人。
 			entries = new TransactionTemplate(
 					HibTransManager.instance()).execute(new GetPostEntriesTransaction());
+			Collections.sort(entries, new EntryDateComparator());
 		}
 		return SUCCESS;
+	}
+
+	private class EntryDateComparator implements Comparator<IPostEntry> {
+		@Override
+		public int compare(IPostEntry a, IPostEntry b) {
+			return (int) (a.getPublishDate().getTime() - b.getPublishDate().getTime());
+		}
 	}
 
 	private class GetPostEntriesTransaction implements TransactionCallback<List<IPostEntry>> {
