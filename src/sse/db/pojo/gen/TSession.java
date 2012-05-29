@@ -17,10 +17,6 @@ public class TSession implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -329391707841579846L;
 	private String id;
 	private TUser TUser;
 

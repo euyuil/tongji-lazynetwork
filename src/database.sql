@@ -3,7 +3,7 @@
 -- Server version:               5.5.23 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2012-05-15 18:55:17
+-- Date/time:                    2012-05-29 21:55:11
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS `t_account`;
 CREATE TABLE IF NOT EXISTS `t_account` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `provider` char(8) NOT NULL,
-  `external_id` bigint(20) unsigned NOT NULL,
+  `external_id` char(64) NOT NULL,
   `user_id` bigint(20) unsigned DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -31,6 +31,25 @@ CREATE TABLE IF NOT EXISTS `t_account` (
   KEY `ix_user_id` (`user_id`),
   KEY `ix_create_time` (`create_time`),
   CONSTRAINT `fk_account_user` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table j2ee.t_oauth_qq
+DROP TABLE IF EXISTS `t_oauth_qq`;
+CREATE TABLE IF NOT EXISTS `t_oauth_qq` (
+  `token` char(64) NOT NULL,
+  `token_secret` char(64) NOT NULL,
+  `account_id` bigint(20) unsigned NOT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `expire_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`token`),
+  KEY `ix_name` (`token`),
+  KEY `ix_account_id` (`account_id`),
+  KEY `ix_create_time` (`create_time`),
+  KEY `ix_expire_time` (`expire_time`),
+  CONSTRAINT `fk_oauth_qq_account` FOREIGN KEY (`account_id`) REFERENCES `t_account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.

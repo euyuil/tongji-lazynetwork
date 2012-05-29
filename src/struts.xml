@@ -25,6 +25,11 @@
 			<result name="failure" type="tiles">sina-login-failure</result>
 			<result name="error" type="tiles">sina-login-error</result>
 		</action>
+		<action name="qq" class="sse.provider.qq.LoginAction">
+			<result name="success" type="redirect">/${userId}</result>
+			<result name="failure" type="tiles">qq-login-failure</result>
+			<result name="error" type="tiles">qq-login-error</result>
+		</action>
 	</package>
 
 </struts>

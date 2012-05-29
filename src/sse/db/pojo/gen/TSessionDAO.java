@@ -19,7 +19,6 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * @author MyEclipse Persistence Tools
  */
 
-@SuppressWarnings({"unchecked", "rawtypes"})
 public class TSessionDAO extends HibernateDaoSupport {
 	private static final Logger log = LoggerFactory
 			.getLogger(TSessionDAO.class);

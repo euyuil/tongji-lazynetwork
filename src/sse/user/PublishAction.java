@@ -28,6 +28,7 @@ public class PublishAction extends ActionSupport implements ServletRequestAware,
 	private static final long serialVersionUID = 3990538061629827827L;
 	private static final Logger log = LoggerFactory.getLogger(PublishAction.class);
 
+	@SuppressWarnings("unused")
 	private HttpServletResponse response;
 	private HttpServletRequest request;
 

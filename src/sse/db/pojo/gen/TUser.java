@@ -22,10 +22,6 @@ public class TUser implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1814702376115948395L;
 	private Long id;
 	private Timestamp createTime;
 	private Set<TSession> TSessions = new HashSet<TSession>(0);

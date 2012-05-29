@@ -12,13 +12,13 @@
 				<a href="login/sina" title="单击这里使用新浪微博登陆"></a>
 			</li>
 			<li class="login-choice" id="login-renren">
-				<a href="login/oauth/request?service=renren" title="单击这里使用人人账号登陆"></a>
+				<a href="login/renren" title="单击这里使用人人账号登陆"></a>
 			</li>
 			<li class="login-choice" id="login-qq-weibo">
-				<a href="login/oauth/request?service=qq" title="单击这里使用腾讯微博登陆"></a>
+				<a href="login/qq" title="单击这里使用腾讯微博登陆"></a>
 			</li>
 			<li class="login-choice" id="login-netease-weibo">
-				<a href="login/oauth/request?service=netease" title="单击这里使用网易微博登陆"></a>
+				<a href="login/netease" title="单击这里使用网易微博登陆"></a>
 			</li>
 			<li class="login-choice" id="login-openid">
 				<input id="login-openid-url" value="使用 OpenID 登录" />

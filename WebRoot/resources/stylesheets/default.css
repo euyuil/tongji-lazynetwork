@@ -144,5 +144,5 @@ aside#sidebar {
 	border: solid 1px #aaa;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
-	-gecko-border-radius: 4px;
+	-moz-border-radius: 4px;
 }

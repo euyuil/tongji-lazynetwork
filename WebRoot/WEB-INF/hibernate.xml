@@ -30,6 +30,7 @@
 				<value>sse.db.pojo.gen.TSession</value>
 				<value>sse.db.pojo.gen.TAccount</value>
 				<value>sse.db.pojo.gen.TOauthSina</value>
+				<value>sse.db.pojo.gen.TOauthQq</value>
 				<value>sse.db.pojo.gen.TUser</value>
 			</list>
 		</property>
@@ -80,6 +81,11 @@
 
 	<bean id="AccountUtil" class="sse.db.pojo.AccountUtil" parent="TAccountDAO"></bean>
 	<bean id="OauthSinaUtil" class="sse.db.pojo.OauthSinaUtil" parent="TOauthSinaDAO"></bean>
+	<bean id="OauthQqUtil" class="sse.db.pojo.OauthQqUtil" parent="TOauthQqDAO"></bean>
 	<bean id="UserUtil" class="sse.db.pojo.UserUtil" parent="TUserDAO"></bean>
 
-</beans>
+	<bean id="TOauthQqDAO" class="sse.db.pojo.gen.TOauthQqDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean></beans>

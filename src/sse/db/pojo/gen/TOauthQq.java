@@ -10,11 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
- * TOauthSina entity. @author MyEclipse Persistence Tools
+ * TOauthQq entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "t_oauth_sina", catalog = "j2ee")
-public class TOauthSina implements java.io.Serializable {
+@Table(name = "t_oauth_qq", catalog = "j2ee")
+public class TOauthQq implements java.io.Serializable {
 
 	// Fields
 
@@ -27,18 +27,18 @@ public class TOauthSina implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public TOauthSina() {
+	public TOauthQq() {
 	}
 
 	/** minimal constructor */
-	public TOauthSina(String token, TAccount TAccount, String tokenSecret) {
+	public TOauthQq(String token, TAccount TAccount, String tokenSecret) {
 		this.token = token;
 		this.TAccount = TAccount;
 		this.tokenSecret = tokenSecret;
 	}
 
 	/** full constructor */
-	public TOauthSina(String token, TAccount TAccount, String tokenSecret,
+	public TOauthQq(String token, TAccount TAccount, String tokenSecret,
 			Timestamp createTime, Timestamp expireTime) {
 		this.token = token;
 		this.TAccount = TAccount;

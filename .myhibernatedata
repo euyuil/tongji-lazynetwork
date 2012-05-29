@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Wed Apr 18 23:23:58 CST 2012
+#Tue May 29 21:19:51 CST 2012
 sessionFactoryName=sse.db.HibSessFactory
 genBasicCompId=true
 profile=
@@ -9,7 +9,7 @@ jndiPath=
 detectM2M=true
 reStrategyClass=
 detectO2O=true
-springDaoFile=src/hibernate.xml
+springDaoFile=WebRoot/WEB-INF/hibernate.xml
 useJavaTypes=true
 keyGenerator=
 libInstallFolder=WebRoot/WEB-INF/lib

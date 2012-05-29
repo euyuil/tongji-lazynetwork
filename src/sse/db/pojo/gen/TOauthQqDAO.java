@@ -10,19 +10,19 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 /**
  * A data access object (DAO) providing persistence and search support for
- * TOauthSina entities. Transaction control of the save(), update() and delete()
+ * TOauthQq entities. Transaction control of the save(), update() and delete()
  * operations can directly support Spring container-managed transactions or they
  * can be augmented to handle user-managed Spring transactions. Each of these
  * methods provides additional information for how to configure it for the
  * desired type of transaction control.
  * 
- * @see sse.db.pojo.gen.TOauthSina
+ * @see sse.db.pojo.gen.TOauthQq
  * @author MyEclipse Persistence Tools
  */
 
-public class TOauthSinaDAO extends HibernateDaoSupport {
+public class TOauthQqDAO extends HibernateDaoSupport {
 	private static final Logger log = LoggerFactory
-			.getLogger(TOauthSinaDAO.class);
+			.getLogger(TOauthQqDAO.class);
 	// property constants
 	public static final String TOKEN_SECRET = "tokenSecret";
 
@@ -30,8 +30,8 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 		// do nothing
 	}
 
-	public void save(TOauthSina transientInstance) {
-		log.debug("saving TOauthSina instance");
+	public void save(TOauthQq transientInstance) {
+		log.debug("saving TOauthQq instance");
 		try {
 			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
@@ -41,8 +41,8 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public void delete(TOauthSina persistentInstance) {
-		log.debug("deleting TOauthSina instance");
+	public void delete(TOauthQq persistentInstance) {
+		log.debug("deleting TOauthQq instance");
 		try {
 			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
@@ -52,11 +52,11 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public TOauthSina findById(java.lang.String id) {
-		log.debug("getting TOauthSina instance with id: " + id);
+	public TOauthQq findById(java.lang.String id) {
+		log.debug("getting TOauthQq instance with id: " + id);
 		try {
-			TOauthSina instance = (TOauthSina) getHibernateTemplate().get(
-					"sse.db.pojo.gen.TOauthSina", id);
+			TOauthQq instance = (TOauthQq) getHibernateTemplate().get(
+					"sse.db.pojo.gen.TOauthQq", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -64,10 +64,10 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List<TOauthSina> findByExample(TOauthSina instance) {
-		log.debug("finding TOauthSina instance by example");
+	public List<TOauthQq> findByExample(TOauthQq instance) {
+		log.debug("finding TOauthQq instance by example");
 		try {
-			List<TOauthSina> results = (List<TOauthSina>) getHibernateTemplate()
+			List<TOauthQq> results = (List<TOauthQq>) getHibernateTemplate()
 					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -79,10 +79,10 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding TOauthSina instance with property: " + propertyName
+		log.debug("finding TOauthQq instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from TOauthSina as model where model."
+			String queryString = "from TOauthQq as model where model."
 					+ propertyName + "= ?";
 			return getHibernateTemplate().find(queryString, value);
 		} catch (RuntimeException re) {
@@ -91,14 +91,14 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List<TOauthSina> findByTokenSecret(Object tokenSecret) {
+	public List<TOauthQq> findByTokenSecret(Object tokenSecret) {
 		return findByProperty(TOKEN_SECRET, tokenSecret);
 	}
 
 	public List findAll() {
-		log.debug("finding all TOauthSina instances");
+		log.debug("finding all TOauthQq instances");
 		try {
-			String queryString = "from TOauthSina";
+			String queryString = "from TOauthQq";
 			return getHibernateTemplate().find(queryString);
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
@@ -106,10 +106,10 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public TOauthSina merge(TOauthSina detachedInstance) {
-		log.debug("merging TOauthSina instance");
+	public TOauthQq merge(TOauthQq detachedInstance) {
+		log.debug("merging TOauthQq instance");
 		try {
-			TOauthSina result = (TOauthSina) getHibernateTemplate().merge(
+			TOauthQq result = (TOauthQq) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -119,8 +119,8 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public void attachDirty(TOauthSina instance) {
-		log.debug("attaching dirty TOauthSina instance");
+	public void attachDirty(TOauthQq instance) {
+		log.debug("attaching dirty TOauthQq instance");
 		try {
 			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -130,8 +130,8 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public void attachClean(TOauthSina instance) {
-		log.debug("attaching clean TOauthSina instance");
+	public void attachClean(TOauthQq instance) {
+		log.debug("attaching clean TOauthQq instance");
 		try {
 			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -141,7 +141,7 @@ public class TOauthSinaDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public static TOauthSinaDAO getFromApplicationContext(ApplicationContext ctx) {
-		return (TOauthSinaDAO) ctx.getBean("TOauthSinaDAO");
+	public static TOauthQqDAO getFromApplicationContext(ApplicationContext ctx) {
+		return (TOauthQqDAO) ctx.getBean("TOauthQqDAO");
 	}
 }

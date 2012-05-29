@@ -1,7 +1,8 @@
 package sse.db.pojo.gen;
 
+import java.sql.Timestamp;
 import java.util.List;
-
+import java.util.Set;
 import org.hibernate.LockMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,6 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * @author MyEclipse Persistence Tools
  */
 
-@SuppressWarnings({"unchecked", "rawtypes"})
 public class TUserDAO extends HibernateDaoSupport {
 	private static final Logger log = LoggerFactory.getLogger(TUserDAO.class);
 

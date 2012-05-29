@@ -27,10 +27,16 @@ import sse.provider.IPostEntry;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class HomeAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
+/**
+ * 这个 Action 可以把其它账号附加到现在登陆的用户名下。
+ * @author Yue
+ * @date 2012-05-25
+ */
+
+public class AttachAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 
 	private static final long serialVersionUID = 3990538061629827827L;
-	private static final Logger log = LoggerFactory.getLogger(HomeAction.class);
+	private static final Logger log = LoggerFactory.getLogger(AttachAction.class);
 
 	@SuppressWarnings("unused")
 	private HttpServletResponse response;

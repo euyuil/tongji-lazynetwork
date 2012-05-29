@@ -26,16 +26,13 @@ public class TAccount implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8848495429442313461L;
 	private Long id;
 	private TUser TUser;
 	private String provider;
-	private Long externalId;
+	private String externalId;
 	private Timestamp createTime;
 	private Set<TOauthSina> TOauthSinas = new HashSet<TOauthSina>(0);
+	private Set<TOauthQq> TOauthQqs = new HashSet<TOauthQq>(0);
 
 	// Constructors
 
@@ -44,19 +41,21 @@ public class TAccount implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public TAccount(String provider, Long externalId) {
+	public TAccount(String provider, String externalId) {
 		this.provider = provider;
 		this.externalId = externalId;
 	}
 
 	/** full constructor */
-	public TAccount(TUser TUser, String provider, Long externalId,
-			Timestamp createTime, Set<TOauthSina> TOauthSinas) {
+	public TAccount(TUser TUser, String provider, String externalId,
+			Timestamp createTime, Set<TOauthSina> TOauthSinas,
+			Set<TOauthQq> TOauthQqs) {
 		this.TUser = TUser;
 		this.provider = provider;
 		this.externalId = externalId;
 		this.createTime = createTime;
 		this.TOauthSinas = TOauthSinas;
+		this.TOauthQqs = TOauthQqs;
 	}
 
 	// Property accessors
@@ -71,7 +70,7 @@ public class TAccount implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	public TUser getTUser() {
 		return this.TUser;
@@ -90,12 +89,12 @@ public class TAccount implements java.io.Serializable {
 		this.provider = provider;
 	}
 
-	@Column(name = "external_id", nullable = false)
-	public Long getExternalId() {
+	@Column(name = "external_id", nullable = false, length = 64)
+	public String getExternalId() {
 		return this.externalId;
 	}
 
-	public void setExternalId(Long externalId) {
+	public void setExternalId(String externalId) {
 		this.externalId = externalId;
 	}
 
@@ -115,6 +114,15 @@ public class TAccount implements java.io.Serializable {
 
 	public void setTOauthSinas(Set<TOauthSina> TOauthSinas) {
 		this.TOauthSinas = TOauthSinas;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "TAccount")
+	public Set<TOauthQq> getTOauthQqs() {
+		return this.TOauthQqs;
+	}
+
+	public void setTOauthQqs(Set<TOauthQq> TOauthQqs) {
+		this.TOauthQqs = TOauthQqs;
 	}
 
 }
