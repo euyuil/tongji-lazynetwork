@@ -35,7 +35,7 @@ public class HomeAction extends ActionSupport implements ServletRequestAware, Se
 	@SuppressWarnings("unused")
 	private HttpServletResponse response;
 	private HttpServletRequest request;
-	private List<IPostEntry> entries;
+	private ArrayList<IPostEntry> entries;
 
 	public String execute() {
 		log.debug("Home owner ID: " + request.getParameter(UserUtil.USER_ID) + ".");
@@ -44,6 +44,10 @@ public class HomeAction extends ActionSupport implements ServletRequestAware, Se
 			// 说明当前登陆的用户是这个首页的主人。
 			entries = new TransactionTemplate(
 					HibTransManager.instance()).execute(new GetPostEntriesTransaction());
+			for (int i = 0; i < entries.size(); ++i) {
+				if (entries.get(i) == null)
+					entries.remove(i--);
+			}
 			Collections.sort(entries, new EntryDateComparator());
 		}
 		return SUCCESS;
@@ -52,19 +56,26 @@ public class HomeAction extends ActionSupport implements ServletRequestAware, Se
 	private class EntryDateComparator implements Comparator<IPostEntry> {
 		@Override
 		public int compare(IPostEntry a, IPostEntry b) {
-			return (int) (a.getPublishDate().getTime() - b.getPublishDate().getTime());
+			long atime = 0, btime = 0;
+			try {
+				atime = a.getPublishDate().getTime();
+				btime = b.getPublishDate().getTime();
+			} catch (Exception e) { }
+			if (atime > btime) return -1;
+			else if (atime < btime) return 1;
+			return 0;
 		}
 	}
 
-	private class GetPostEntriesTransaction implements TransactionCallback<List<IPostEntry>> {
+	private class GetPostEntriesTransaction implements TransactionCallback<ArrayList<IPostEntry>> {
 		@Override
-		public List<IPostEntry> doInTransaction(TransactionStatus status) {
+		public ArrayList<IPostEntry> doInTransaction(TransactionStatus status) {
 			TUser user = UserUtil.instance().getCurrentUser();
 			if (user == null) return null;
 			user = UserUtil.instance().findById(user.getId());
 			if (user == null) return null;
 			Set<TAccount> accounts = user.getTAccounts();
-			List<IPostEntry> entries = new ArrayList<IPostEntry>();
+			ArrayList<IPostEntry> entries = new ArrayList<IPostEntry>();
 			if (accounts != null) {
 				for (TAccount account : accounts) {
 					IAccount acc = AccountUtil.buildAccountFromEntity(account);
@@ -87,7 +98,7 @@ public class HomeAction extends ActionSupport implements ServletRequestAware, Se
 		this.request = request;
 	}
 
-	public void setEntries(List<IPostEntry> entries) {
+	public void setEntries(ArrayList<IPostEntry> entries) {
 		this.entries = entries;
 	}
 

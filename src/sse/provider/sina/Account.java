@@ -52,7 +52,8 @@ public class Account implements IAccount {
 		List<IPostEntry> result = new ArrayList<IPostEntry>();
 		try {
 			Weibo weibo = new Weibo();
-			weibo.setToken(getAccessToken());
+			weibo.setOAuthAccessToken(getAccessToken());
+			weibo.setOAuthConsumer(Weibo.CONSUMER_KEY, Weibo.CONSUMER_SECRET);
 			Paging page = new Paging(1);
 			List<Status> statuses = weibo.getFriendsTimeline(page);
 			for (Status status : statuses) {

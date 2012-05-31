@@ -41,6 +41,14 @@
 		<put-attribute name="title" value="登陆新浪微博时服务器出现错误" />
 	</definition>
 
+	<definition name="qq-login-failure" extends="login-failure">
+		<put-attribute name="title" value="QQ 微博验证失败" />
+	</definition>
+
+	<definition name="qq-login-error" extends="login-error">
+		<put-attribute name="title" value="登陆 QQ 微博时服务器出现错误" />
+	</definition>
+
 	<definition name="user-home" extends="base-layout-raside">
 		<put-attribute name="title" value="用户首页" />
 		<put-attribute name="content" value="/WEB-INF/jsp/tmpls/users/home/content.jsp" />

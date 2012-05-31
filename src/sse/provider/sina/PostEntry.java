@@ -76,6 +76,8 @@ public class PostEntry implements IPostEntry {
 			sb.append(thumbnailSmall);
 		}
 
+		sb.append(getPublishDate().toString());
+
 		return sb.toString();
 	}
 
