@@ -9,12 +9,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import sse.db.pojo.OauthEntity;
+
 /**
  * TOauthSina entity. @author MyEclipse Persistence Tools
  */
 @Entity
 @Table(name = "t_oauth_sina", catalog = "j2ee")
-public class TOauthSina implements java.io.Serializable {
+public class TOauthSina implements java.io.Serializable, OauthEntity {
 
 	// Fields
 

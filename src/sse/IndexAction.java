@@ -1,5 +1,8 @@
 package sse;
 
+import sse.db.pojo.UserUtil;
+import sse.db.pojo.gen.TUser;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class IndexAction extends ActionSupport {
@@ -8,5 +11,9 @@ public class IndexAction extends ActionSupport {
 
 	public String execute() {
 		return SUCCESS;
+	}
+
+	public TUser getCurrentUser() {
+		return UserUtil.instance().getCurrentUser();
 	}
 }

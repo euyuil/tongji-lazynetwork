@@ -2,9 +2,10 @@ package weibo4j.examples.tags;
 
 import java.util.List;
 
+import org.json.JSONObject;
+
 import weibo4j.Tag;
 import weibo4j.Weibo;
-import weibo4j.org.json.JSONObject;
 
 @SuppressWarnings({"unused"})
 public class DestroyTags {

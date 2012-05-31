@@ -1,7 +1,17 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <div id="wrapper">
 <div id="content">
+
+	<div id="authorization">
+		<s:if test="currentUser eq null">
+			您还未登录。
+		</s:if>
+		<s:if test="currentUser neq null">
+			欢迎用户 <s:property value="currentUser.id" /> |
+				<a href="<s:url action="user/logout" />">登出</a>
+		</s:if>
+	</div>
 
 	<section id="description">
 		Lazy Network 是您强大的信息聚合助手，只需登录下列任意一个社交账号，即可开始体验。

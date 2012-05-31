@@ -3,8 +3,9 @@
  */
 package weibo4j.examples.friendships;
 
+import org.json.JSONObject;
+
 import weibo4j.Weibo;
-import weibo4j.org.json.JSONObject;
 
 /**
  * @author sina

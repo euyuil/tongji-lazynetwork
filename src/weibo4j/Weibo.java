@@ -35,6 +35,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import weibo4j.http.AccessToken;
@@ -43,8 +46,6 @@ import weibo4j.http.ImageItem;
 import weibo4j.http.PostParameter;
 import weibo4j.http.RequestToken;
 import weibo4j.http.Response;
-import weibo4j.org.json.JSONException;
-import weibo4j.org.json.JSONObject;
 import weibo4j.util.URLEncodeUtils;
 
 /**

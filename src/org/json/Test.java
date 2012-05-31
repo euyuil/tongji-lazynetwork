@@ -1,4 +1,4 @@
-package weibo4j.org.json;
+package org.json;
 
 import java.util.Collection;
 import java.util.Iterator;

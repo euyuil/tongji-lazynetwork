@@ -6,9 +6,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/j2ee" />
+		<property name="url" value="jdbc:mysql://10.60.1.59:3306/j2ee" />
 		<property name="username" value="root" />
-		<property name="password" value="test" />
+		<property name="password" value="liuyue" />
 	</bean>
 
 	<bean id="sessionFactory"

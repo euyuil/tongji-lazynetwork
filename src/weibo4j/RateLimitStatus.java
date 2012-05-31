@@ -28,11 +28,11 @@ package weibo4j;
 
 import java.util.Date;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Element;
 
 import weibo4j.http.Response;
-import weibo4j.org.json.JSONException;
-import weibo4j.org.json.JSONObject;
 
 /**
  * A data class representing Weibo rate limit status

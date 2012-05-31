@@ -14,6 +14,9 @@
 		<action name="home" class="sse.user.HomeAction">
 			<result name="success" type="tiles">user-home</result>
 		</action>
+		<action name="logout" class="sse.user.LogoutAction">
+			<result name="success" type="redirect">/</result>
+		</action>
 		<action name="publish" class="sse.user.PublishAction">
 			<result name="success" type="redirect">/${userId}</result>
 		</action>
