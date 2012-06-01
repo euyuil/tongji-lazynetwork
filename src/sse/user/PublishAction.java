@@ -19,7 +19,7 @@ import sse.db.pojo.AccountUtil;
 import sse.db.pojo.UserUtil;
 import sse.db.pojo.gen.TAccount;
 import sse.db.pojo.gen.TUser;
-import sse.provider.IAccount;
+import sse.provider.IHandler;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -50,7 +50,7 @@ public class PublishAction extends ActionSupport implements ServletRequestAware,
 			return ERROR; // TODO user didn't add any account.
 		}
 		for (TAccount account : accounts) {
-			IAccount acc = AccountUtil.buildAccountFromEntity(account);
+			IHandler acc = AccountUtil.buildAccountFromEntity(account);
 			try {
 				acc.publish(content);
 			} catch (Exception e) {

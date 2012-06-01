@@ -3,7 +3,7 @@ package sse.provider;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IAccount extends Serializable {
+public interface IHandler extends Serializable {
 
 	public Long getId();
 

@@ -12,7 +12,7 @@ import sse.db.pojo.gen.TAccount;
 import sse.db.pojo.gen.TAccountDAO;
 import sse.db.pojo.gen.TOauthQq;
 import sse.db.pojo.gen.TOauthSina;
-import sse.provider.IAccount;
+import sse.provider.IHandler;
 
 public class AccountUtil extends TAccountDAO {
 
@@ -24,14 +24,14 @@ public class AccountUtil extends TAccountDAO {
 		return springInstance = (AccountUtil) Spring.getBean("AccountUtil");
 	}
 
-	public static IAccount buildAccountFromEntity(TAccount accountEntity) {
-		IAccount account = null;
+	public static IHandler buildAccountFromEntity(TAccount accountEntity) {
+		IHandler account = null;
 		try {
 			if ("sina".equalsIgnoreCase(accountEntity.getProvider())) {
-				account = new sse.provider.sina.Account(accountEntity);
+				account = new sse.provider.sina.Handler(accountEntity);
 				// build sina account.
 			} else if ("qq".equalsIgnoreCase(accountEntity.getProvider())) {
-				account = new sse.provider.qq.Account(accountEntity);
+				account = new sse.provider.qq.Handler(accountEntity);
 			}
 		} catch (Exception e) {
 			return null;

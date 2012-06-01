@@ -22,7 +22,7 @@ import sse.db.pojo.AccountUtil;
 import sse.db.pojo.UserUtil;
 import sse.db.pojo.gen.TAccount;
 import sse.db.pojo.gen.TUser;
-import sse.provider.IAccount;
+import sse.provider.IHandler;
 import sse.provider.IPostEntry;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -78,7 +78,7 @@ public class HomeAction extends ActionSupport implements ServletRequestAware, Se
 			ArrayList<IPostEntry> entries = new ArrayList<IPostEntry>();
 			if (accounts != null) {
 				for (TAccount account : accounts) {
-					IAccount acc = AccountUtil.buildAccountFromEntity(account);
+					IHandler acc = AccountUtil.buildAccountFromEntity(account);
 					List<IPostEntry> ents = acc.getFriendsTimeline();
 					if (ents != null)
 						entries.addAll(ents);
