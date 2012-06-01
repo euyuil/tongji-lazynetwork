@@ -60,7 +60,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,
 			if (externalId == null || externalId.longValue() == 0)
 				return FAILURE;
 
-			Account.getAccountByLogin(request, accessToken, externalId);
+			Handler.getAccountByLogin(request, accessToken, externalId);
 			if (UserUtil.instance().getCurrentUser() == null)
 				return ERROR;
 

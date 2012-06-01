@@ -9,7 +9,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import sse.db.pojo.UserUtil;
-import sse.provider.qq.Account;
+import sse.provider.qq.Handler;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.tencent.weibo.beans.OAuth;
@@ -90,7 +90,7 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,
 				if (externalName == null || externalName.isEmpty())
 					return FAILURE;
 
-				Account.getAccountByLogin(request, oauth, externalName);
+				Handler.getAccountByLogin(request, oauth, externalName);
 				if (UserUtil.instance().getCurrentUser() == null)
 					return ERROR;
 			}

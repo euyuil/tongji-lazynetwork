@@ -12,7 +12,6 @@ import sse.db.pojo.gen.TAccount;
 import sse.db.pojo.gen.TAccountDAO;
 import sse.db.pojo.gen.TOauthQq;
 import sse.db.pojo.gen.TOauthSina;
-import sse.provider.IAccount;
 
 public class AccountUtil extends TAccountDAO {
 
@@ -22,21 +21,6 @@ public class AccountUtil extends TAccountDAO {
 		if (springInstance != null)
 			return springInstance;
 		return springInstance = (AccountUtil) Spring.getBean("AccountUtil");
-	}
-
-	public static IAccount buildAccountFromEntity(TAccount accountEntity) {
-		IAccount account = null;
-		try {
-			if ("sina".equalsIgnoreCase(accountEntity.getProvider())) {
-				account = new sse.provider.sina.Account(accountEntity);
-				// build sina account.
-			} else if ("qq".equalsIgnoreCase(accountEntity.getProvider())) {
-				account = new sse.provider.qq.Account(accountEntity);
-			}
-		} catch (Exception e) {
-			return null;
-		}
-		return account;
 	}
 
 	public static TOauthSina getTOauthSina(TAccount entity) {

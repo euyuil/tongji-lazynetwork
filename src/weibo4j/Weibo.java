@@ -133,7 +133,7 @@ public class Weibo extends WeiboSupport implements java.io.Serializable {
 	 * @return user
 	 * @since Weibo4J 1.2.1
 	 * @throws WeiboException when Weibo service or network is unavailable
-	 * @see <a href="http://open.t.sina.com.cn/wiki/index.php/Account/verify_credentials">account/verify_credentials </a>
+	 * @see <a href="http://open.t.sina.com.cn/wiki/index.php/Handler/verify_credentials">account/verify_credentials </a>
 	 */
 	public User verifyCredentials() throws WeiboException {
 		/*return new UserUtil(get(getBaseURL() + "account/verify_credentials.xml"
@@ -152,7 +152,7 @@ public class Weibo extends WeiboSupport implements java.io.Serializable {
 	 * @return the updated user
 	 * @throws WeiboException when Weibo service or network is unavailable
 	 * @since Weibo4J 1.2.1
-	 * @see <a href="http://open.t.sina.com.cn/wiki/index.php/Account/update_profile">account/update_profile </a>
+	 * @see <a href="http://open.t.sina.com.cn/wiki/index.php/Handler/update_profile">account/update_profile </a>
 	 */
 	public User updateProfile(String name, String email, String url
 			, String location, String description) throws WeiboException {
@@ -171,7 +171,7 @@ public class Weibo extends WeiboSupport implements java.io.Serializable {
 	 * @param image
 	 * @return
 	 * @throws WeiboException
-	 * @see <a href="http://open.t.sina.com.cn/wiki/index.php/Account/update_profile_image">account/update_profile_image</a>
+	 * @see <a href="http://open.t.sina.com.cn/wiki/index.php/Handler/update_profile_image">account/update_profile_image</a>
 	 */
 	public User updateProfileImage(File image)throws WeiboException {
 		return new User(http.multPartURL("image",getBaseURL() + "account/update_profile_image.json",
@@ -183,7 +183,7 @@ public class Weibo extends WeiboSupport implements java.io.Serializable {
 	 * @return the rate limit status
 	 * @throws WeiboException when Weibo service or network is unavailable
 	 * @since  Weibo4J 1.2.1
-	 * @see <a href="http://open.t.sina.com.cn/wiki/index.php/Account/rate_limit_status">account/rate_limit_status </a>
+	 * @see <a href="http://open.t.sina.com.cn/wiki/index.php/Handler/rate_limit_status">account/rate_limit_status </a>
 	 */
 	public RateLimitStatus rateLimitStatus() throws WeiboException {
 		return new RateLimitStatus(http.get(getBaseURL() + "account/rate_limit_status.json" , true),this);
@@ -1777,7 +1777,7 @@ public class Weibo extends WeiboSupport implements java.io.Serializable {
 	 * @param comment (message&realname&geo&badge) 
 	 * @return UserUtil
 	 * @throws WeiboException
-	 * @see<a href="http://open.t.sina.com.cn/wiki/index.php/Account/update_privacy">Account/update privacy</a>
+	 * @see<a href="http://open.t.sina.com.cn/wiki/index.php/Handler/update_privacy">Handler/update privacy</a>
 	 * @since Weibo4J 1.2.1
 	 * @deprecated
 	 */

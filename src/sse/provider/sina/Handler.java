@@ -12,7 +12,7 @@ import sse.db.pojo.AccountUtil;
 import sse.db.pojo.OauthEntity;
 import sse.db.pojo.gen.TAccount;
 import sse.db.pojo.gen.TOauthSina;
-import sse.provider.IAccount;
+import sse.provider.IHandler;
 import sse.provider.IPostEntry;
 import sse.provider.OauthHelper;
 import weibo4j.Paging;
@@ -24,12 +24,12 @@ import weibo4j.http.AccessToken;
 
 /**
  * @brief 该类代表一个新浪微博账号信息，可从数据库中的实体构造。亦提供静态函数从用
- *        户的登陆行为中构造。该类实现了 IAccount 接口，为统一发布微博提供方便。
+ *        户的登陆行为中构造。该类实现了 IHandler 接口，为统一发布微博提供方便。
  * @author EUYUIL
  * @date 2012-05-08
  */
 
-public class Account implements IAccount {
+public class Handler implements IHandler {
 
 	private static final long serialVersionUID = 291224956251589120L;
 	private static final String PROVIDER = "sina";
@@ -37,7 +37,7 @@ public class Account implements IAccount {
 	private TAccount entity;
 	private AccessToken accessToken;
 
-	public Account(TAccount entity) throws Exception {
+	public Handler(TAccount entity) throws Exception {
 		if (entity == null || !PROVIDER.equalsIgnoreCase(entity.getProvider()))
 			throw new Exception(
 					"Only can construct from Sina Weibo account entity.");
@@ -85,7 +85,7 @@ public class Account implements IAccount {
 		return accessToken;
 	}
 
-	public static Account getAccountByLogin(HttpServletRequest request,
+	public static Handler getAccountByLogin(HttpServletRequest request,
 			final AccessToken accessToken, final Long externalId) {
 
 		OauthHelper oah = new OauthHelper() {
@@ -96,8 +96,8 @@ public class Account implements IAccount {
 			}
 
 			@Override
-			public IAccount newAccountFromEntity() throws Exception {
-				return new Account(getCurrentAccount());
+			public IHandler newAccountFromEntity() throws Exception {
+				return new Handler(getCurrentAccount());
 			}
 		};
 
@@ -113,7 +113,7 @@ public class Account implements IAccount {
 		new TransactionTemplate(HibTransManager.instance())
 				.execute(oah.saveCurrentUser());
 
-		return (Account) new TransactionTemplate(
+		return (Handler) new TransactionTemplate(
 				HibTransManager.instance()).execute(oah.getAccountFromEntity());
 	}
 }

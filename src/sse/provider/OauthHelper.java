@@ -23,7 +23,7 @@ public abstract class OauthHelper {
 	private TAccount currentAccount;
 
 	public abstract OauthEntity newOauthEntity();
-	public abstract IAccount newAccountFromEntity() throws Exception;
+	public abstract IHandler newAccountFromEntity() throws Exception;
 
 	/**
 	 * 该类是一个 Transaction 回调类，能创造和更新数据库中相应 Token 和
@@ -107,17 +107,17 @@ public abstract class OauthHelper {
 		return new GetAccountFromEntity();
 	}
 
-	public class GetAccountFromEntity implements TransactionCallback<IAccount> {
+	public class GetAccountFromEntity implements TransactionCallback<IHandler> {
 
 		@Override
-		public IAccount doInTransaction(TransactionStatus status) {
-			IAccount account = null;
+		public IHandler doInTransaction(TransactionStatus status) {
+			IHandler handler = null;
 			try {
-				account = newAccountFromEntity();
+				handler = newAccountFromEntity();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return account;
+			return handler;
 		}
 	}
 

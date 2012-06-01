@@ -18,11 +18,11 @@ import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import sse.db.HibTransManager;
-import sse.db.pojo.AccountUtil;
 import sse.db.pojo.UserUtil;
 import sse.db.pojo.gen.TAccount;
 import sse.db.pojo.gen.TUser;
-import sse.provider.IAccount;
+import sse.provider.HandlerHelper;
+import sse.provider.IHandler;
 import sse.provider.IPostEntry;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -73,7 +73,7 @@ public class AttachAction extends ActionSupport implements ServletRequestAware, 
 			List<IPostEntry> entries = new ArrayList<IPostEntry>();
 			if (accounts != null) {
 				for (TAccount account : accounts) {
-					IAccount acc = AccountUtil.buildAccountFromEntity(account);
+					IHandler acc = HandlerHelper.buildHandlerFromAccount(account);
 					List<IPostEntry> ents = acc.getFriendsTimeline();
 					if (ents != null)
 						entries.addAll(ents);
