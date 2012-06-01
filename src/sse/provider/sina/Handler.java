@@ -24,7 +24,7 @@ import weibo4j.http.AccessToken;
 
 /**
  * @brief 该类代表一个新浪微博账号信息，可从数据库中的实体构造。亦提供静态函数从用
- *        户的登陆行为中构造。该类实现了 IAccount 接口，为统一发布微博提供方便。
+ *        户的登陆行为中构造。该类实现了 IHandler 接口，为统一发布微博提供方便。
  * @author EUYUIL
  * @date 2012-05-08
  */
