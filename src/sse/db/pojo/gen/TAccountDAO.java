@@ -1,6 +1,6 @@
 package sse.db.pojo.gen;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import org.hibernate.LockMode;
@@ -54,7 +54,7 @@ public class TAccountDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public TAccount findById(java.lang.Long id) {
+	public TAccount findById(Long id) {
 		log.debug("getting TAccount instance with id: " + id);
 		try {
 			TAccount instance = (TAccount) getHibernateTemplate().get(

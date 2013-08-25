@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-<type-mapping>
-	<sql-type jdbc-type="BIGINT" hibernate-type="java.lang.Long"></sql-type>
-</type-mapping>
+
+
+	<table name="t_oauth_renren" catalog="j2ee"></table>
 </hibernate-reverse-engineering>

@@ -33,6 +33,11 @@
 			<result name="failure" type="tiles">qq-login-failure</result>
 			<result name="error" type="tiles">qq-login-error</result>
 		</action>
+		<action name="renren" class="sse.provider.renren.LoginAction">
+			<result name="success" type="redirect">/${userId}</result>
+			<result name="failure" type="tiles">renren-login-failure</result>
+			<result name="error" type="tiles">renren-login-error</result>
+		</action>
 	</package>
 
 </struts>

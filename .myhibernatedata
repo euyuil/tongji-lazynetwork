@@ -1,5 +1,5 @@
 #MyEclipse Hibernate Properties
-#Tue May 29 21:19:51 CST 2012
+#Sun Jun 03 16:44:58 CST 2012
 sessionFactoryName=sse.db.HibSessFactory
 genBasicCompId=true
 profile=
@@ -10,11 +10,11 @@ detectM2M=true
 reStrategyClass=
 detectO2O=true
 springDaoFile=WebRoot/WEB-INF/hibernate.xml
-useJavaTypes=true
+useJavaTypes=false
 keyGenerator=
 libInstallFolder=WebRoot/WEB-INF/lib
 addLibs2Project=true
-genVersionTag=false
+genVersionTag=true
 sessionFactoryId=sessionFactory
 basePersistenceClass=
 genAnnotations=true

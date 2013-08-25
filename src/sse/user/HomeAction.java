@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.slf4j.Logger;
@@ -32,9 +33,7 @@ public class HomeAction extends ActionSupport implements ServletRequestAware, Se
 	private static final long serialVersionUID = 3990538061629827827L;
 	private static final Logger log = LoggerFactory.getLogger(HomeAction.class);
 
-	@SuppressWarnings("unused")
-	private HttpServletResponse response;
-	private HttpServletRequest request;
+	private HttpServletRequest request = ServletActionContext.getRequest();  
 	private ArrayList<IPostEntry> entries;
 
 	public String execute() {
@@ -90,7 +89,6 @@ public class HomeAction extends ActionSupport implements ServletRequestAware, Se
 
 	@Override
 	public void setServletResponse(HttpServletResponse response) {
-		this.response = response;
 	}
 
 	@Override

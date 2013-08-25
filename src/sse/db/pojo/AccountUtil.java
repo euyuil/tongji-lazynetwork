@@ -5,31 +5,14 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
-import org.hibernate.crite
-
--- Dumping structure for table j2ee.t_oauth_renren
-DROP TABLE IF EXISTS `t_oauth_renren`;
-CREATE TABLE IF NOT EXISTS `t_oauth_renren` (
-  `token` char(64) NOT NULL,
-  `refresh_token` char(64) NOT NULL,
-  `account_id` bigint(20) unsigned NOT NULL,
-  `create_time` datetime DEFAULT NULL,
-  `expire_time` datetime DEFAULT NULL,
-  `renren_id` bigint(10) NOT NULL,
-  PRIMARY KEY (`token`),
-  KEY `ix_name` (`token`),
-  KEY `ix_account_id` (`account_id`),
-  KEY `ix_create_time` (`create_time`),
-  KEY `ix_expire_time` (`expire_time`),
-  CONSTRAINT `fk_oauth_renren_account` FOREIGN KEY (`account_id`) REFERENCES `t_account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-rion.Restrictions;
+import org.hibernate.criterion.Restrictions;
 
 import sse.Spring;
 import sse.db.pojo.gen.TAccount;
 import sse.db.pojo.gen.TAccountDAO;
 import sse.db.pojo.gen.TOauthQq;
 import sse.db.pojo.gen.TOauthSina;
+import sse.db.pojo.gen.TOauthRenren;
 
 public class AccountUtil extends TAccountDAO {
 
@@ -58,6 +41,16 @@ public class AccountUtil extends TAccountDAO {
 		if (tokens == null || tokens.isEmpty())
 			return null;
 		Iterator<TOauthQq> iter = tokens.iterator();
+		return iter.next();
+	}
+	
+	public static TOauthRenren getTOauthRenren(TAccount entity) {
+		if (!entity.getProvider().equalsIgnoreCase("renren"))
+			return null;
+		Set<TOauthRenren> tokens = entity.getTOauthRenrens();
+		if (tokens == null || tokens.isEmpty())
+			return null;
+		Iterator<TOauthRenren> iter = tokens.iterator();
 		return iter.next();
 	}
 

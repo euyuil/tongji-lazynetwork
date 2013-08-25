@@ -6,14 +6,15 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://10.60.1.59:3306/j2ee" />
+		<property name="url" value="jdbc:mysql://localhost:3306/j2ee" />
 		<property name="username" value="root" />
-		<property name="password" value="liuyue" />
+		<property name="password" value="test" />
 	</bean>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<!-- <property name="configLocation" value="classpath:hibernate.cfg.xml" /> -->
+		<!-- <property name="configLocation" value="classpath:hibernate.cfg.xml" 
+			/> -->
 		<property name="dataSource">
 			<ref bean="dataSource" />
 		</property>
@@ -31,6 +32,7 @@
 				<value>sse.db.pojo.gen.TAccount</value>
 				<value>sse.db.pojo.gen.TOauthSina</value>
 				<value>sse.db.pojo.gen.TOauthQq</value>
+				<value>sse.db.pojo.gen.TOauthRenren</value>
 				<value>sse.db.pojo.gen.TUser</value>
 			</list>
 		</property>
@@ -72,7 +74,16 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-
+	<bean id="TOauthQqDAO" class="sse.db.pojo.gen.TOauthQqDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TOauthRenrenDAO" class="sse.db.pojo.gen.TOauthRenrenDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 	<bean id="TUserDAO" class="sse.db.pojo.gen.TUserDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
@@ -82,10 +93,7 @@
 	<bean id="AccountUtil" class="sse.db.pojo.AccountUtil" parent="TAccountDAO"></bean>
 	<bean id="OauthSinaUtil" class="sse.db.pojo.OauthSinaUtil" parent="TOauthSinaDAO"></bean>
 	<bean id="OauthQqUtil" class="sse.db.pojo.OauthQqUtil" parent="TOauthQqDAO"></bean>
+	<bean id="OauthRenrenUtil" class="sse.db.pojo.OauthRenrenUtil" parent="TOauthRenrenDAO"></bean>
 	<bean id="UserUtil" class="sse.db.pojo.UserUtil" parent="TUserDAO"></bean>
 
-	<bean id="TOauthQqDAO" class="sse.db.pojo.gen.TOauthQqDAO">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean></beans>
+</beans>

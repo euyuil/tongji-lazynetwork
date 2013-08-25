@@ -1,6 +1,6 @@
 package sse.db.pojo.gen;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import org.hibernate.LockMode;
@@ -52,7 +52,7 @@ public class TUserDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public TUser findById(java.lang.Long id) {
+	public TUser findById(Long id) {
 		log.debug("getting TUser instance with id: " + id);
 		try {
 			TUser instance = (TUser) getHibernateTemplate().get(

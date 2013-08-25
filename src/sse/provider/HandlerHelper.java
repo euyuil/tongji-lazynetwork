@@ -11,6 +11,8 @@ public class HandlerHelper {
 				handler = new sse.provider.sina.Handler(accountEntity);
 			} else if ("qq".equalsIgnoreCase(accountEntity.getProvider())) {
 				handler = new sse.provider.qq.Handler(accountEntity);
+			} else if ("renren".equalsIgnoreCase(accountEntity.getProvider())) {
+				handler = new sse.provider.renren.Handler(accountEntity);
 			}
 		} catch (Exception e) {
 			return null;

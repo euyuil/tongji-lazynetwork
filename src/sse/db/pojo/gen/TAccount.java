@@ -33,6 +33,7 @@ public class TAccount implements java.io.Serializable {
 	private Timestamp createTime;
 	private Set<TOauthSina> TOauthSinas = new HashSet<TOauthSina>(0);
 	private Set<TOauthQq> TOauthQqs = new HashSet<TOauthQq>(0);
+	private Set<TOauthRenren> TOauthRenrens = new HashSet<TOauthRenren>(0);
 
 	// Constructors
 
@@ -49,13 +50,14 @@ public class TAccount implements java.io.Serializable {
 	/** full constructor */
 	public TAccount(TUser TUser, String provider, String externalId,
 			Timestamp createTime, Set<TOauthSina> TOauthSinas,
-			Set<TOauthQq> TOauthQqs) {
+			Set<TOauthQq> TOauthQqs, Set<TOauthRenren> TOauthRenrens) {
 		this.TUser = TUser;
 		this.provider = provider;
 		this.externalId = externalId;
 		this.createTime = createTime;
 		this.TOauthSinas = TOauthSinas;
 		this.TOauthQqs = TOauthQqs;
+		this.TOauthRenrens = TOauthRenrens;
 	}
 
 	// Property accessors
@@ -123,6 +125,15 @@ public class TAccount implements java.io.Serializable {
 
 	public void setTOauthQqs(Set<TOauthQq> TOauthQqs) {
 		this.TOauthQqs = TOauthQqs;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "TAccount")
+	public Set<TOauthRenren> getTOauthRenrens() {
+		return this.TOauthRenrens;
+	}
+
+	public void setTOauthRenrens(Set<TOauthRenren> TOauthRenrens) {
+		this.TOauthRenrens = TOauthRenrens;
 	}
 
 }

@@ -18,6 +18,7 @@ public abstract class OauthHelper {
 
 	private String token;
 	private String tokenSecret;
+	private String refreshToken;
 	private String provider;
 	private String externalId;
 	private TAccount currentAccount;
@@ -26,8 +27,8 @@ public abstract class OauthHelper {
 	public abstract IHandler newAccountFromEntity() throws Exception;
 
 	/**
-	 * 该类是一�Transaction 回调类，能创造和更新数据库中相应 Token �
-	 * Token Secret, 并获得账号对象�
+	 * 该类是一�Transaction 回调类，能创造和更新数据库中相应 Token �
+	 * Token Secret, 并获得账号对象�
 	 * @author EUYUIL
 	 * @date 2012-05-31
 	 */
@@ -44,13 +45,13 @@ public abstract class OauthHelper {
 
 			Session session = HibSessManager.current();
 
-			// 看看这个账号以前是否登录过�
+			// 看看这个账号以前是否登录过�
 			TAccount accountEntity = AccountUtil.instance().findByProviderExternalId(
 					getProvider(), getExternalId());
-			if (accountEntity == null) { // 说明这个账号不存在�
+			if (accountEntity == null) { // 说明这个账号不存在�
 				accountEntity = new TAccount();
-				// 将账号的主人设置成当前已经登录的用户，如果当前没有登录，�
-				// 数据库的触发器会帮助创建一个用户的�
+				// 将账号的主人设置成当前已经登录的用户，如果当前没有登录，�
+				// 数据库的触发器会帮助创建一个用户的�
 				accountEntity.setTUser(UserUtil.instance().getCurrentUser());
 				accountEntity.setProvider(getProvider());
 				accountEntity.setExternalId(getExternalId());
@@ -59,7 +60,7 @@ public abstract class OauthHelper {
 
 			OauthEntity oauthEntity = newOauthEntity();
 
-			// 如果原来�token, 则删除原有的�
+			// 如果原来�token, 则删除原有的�
 			Query deleteTokens = session.createQuery("delete "
 					+ oauthEntity.getClass().getName()
 					+ " where TAccount = :account " + " or token = :token");
@@ -67,10 +68,11 @@ public abstract class OauthHelper {
 			deleteTokens.setString("token", getToken());
 			deleteTokens.executeUpdate();
 
-			// �token 写入数据库�
+			// �token 写入数据库�
 			oauthEntity.setTAccount(accountEntity);
 			oauthEntity.setToken(getToken());
 			oauthEntity.setTokenSecret(getTokenSecret());
+			oauthEntity.setRefreshToken(getRefreshToken());
 			OauthEntityUtil.save(oauthEntity);
 
 			return accountEntity;
@@ -78,7 +80,7 @@ public abstract class OauthHelper {
 	}
 
 	/**
-	 * 该类是一�Transaction 回调类，能够将当前的用户保存�Spring Bean 中�
+	 * 该类是一�Transaction 回调类，能够将当前的用户保存�Spring Bean 中�
 	 * @author EUYUIL
 	 * @date 2012-05-31
 	 */
@@ -91,14 +93,14 @@ public abstract class OauthHelper {
 
 		@Override
 		protected void doInTransactionWithoutResult(TransactionStatus status) {
-			// 设置当前用户�
+			// 设置当前用户�
 			TUser userEntity = getCurrentAccount().getTUser();
 			UserUtil.instance().setCurrentUser(userEntity);
 		}
 	}
 
 	/**
-	 * 该类是一�Transaction 回调类，能够从数据库实体中获得账号对象�
+	 * 该类是一�Transaction 回调类，能够从数据库实体中获得账号对象�
 	 * @author EUYUIL
 	 * @date 2012-05-31
 	 */
@@ -136,6 +138,14 @@ public abstract class OauthHelper {
 
 	public void setTokenSecret(String tokenSecret) {
 		this.tokenSecret = tokenSecret;
+	}
+	
+	public String getRefreshToken() {
+		return refreshToken;
+	}
+
+	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
 	}
 
 	public String getProvider() {

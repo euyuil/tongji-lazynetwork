@@ -34,7 +34,8 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,
 		// 说明是用户主动想要登录微博。
 		if (verifier == null || verifier.isEmpty()) {
 
-			System.out.println(request.getProtocol() + request.getHeader("Host") + request.getContextPath());
+			System.out.println(request.getProtocol()
+					+ request.getHeader("Host") + request.getContextPath());
 			RequestToken requestToken = WebOAuth
 					.request("http://localhost:8080/LazyNetwork/login/sina");
 			request.getSession().setAttribute("request_token", requestToken);
@@ -63,7 +64,6 @@ public class LoginAction extends ActionSupport implements ServletRequestAware,
 			Handler.getAccountByLogin(request, accessToken, externalId);
 			if (UserUtil.instance().getCurrentUser() == null)
 				return ERROR;
-
 		}
 
 		return SUCCESS;

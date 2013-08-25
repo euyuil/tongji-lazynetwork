@@ -97,4 +97,10 @@ public class TOauthSina implements java.io.Serializable, OauthEntity {
 		this.expireTime = expireTime;
 	}
 
+	@Override
+	public void setRefreshToken(String rft) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
